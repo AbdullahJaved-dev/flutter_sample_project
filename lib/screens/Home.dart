@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample_project/screens/ContactUsScreen.dart';
+import 'package:flutter_sample_project/screens/FAQScreen.dart';
 import 'package:flutter_sample_project/screens/HomeScreen.dart';
-import 'package:flutter_sample_project/screens/PerformanceGraphScreen.dart';
 import 'package:flutter_sample_project/screens/SignInScreen.dart';
-
+import 'package:flutter_sample_project/screens/TodayNewsScreen.dart';
 
 final GlobalKey<NavigatorState> homeGlobalNavigatorKey =
-GlobalKey<NavigatorState>();
+    GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> globalNavigatorKey =
-GlobalKey<NavigatorState>();
+    GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> newsNavigatorKey = GlobalKey<NavigatorState>();
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -29,8 +30,13 @@ class _HomeState extends State<Home> {
         );
       },
     ),
-    const Center(
-      child: Text("Today News"),
+    Navigator(
+      key: newsNavigatorKey,
+      onGenerateRoute: (RouteSettings routeSettings) {
+        return MaterialPageRoute(
+          builder: (context) => const TodayNewsScreen(),
+        );
+      },
     ),
     Navigator(
       key: homeGlobalNavigatorKey,
@@ -46,7 +52,9 @@ class _HomeState extends State<Home> {
     if (index == _selectedTab) {
       if (index == 0) {
         homeGlobalNavigatorKey.currentState?.popUntil((route) => route.isFirst);
-      } else if(index == 2){
+      } else if (index == 1) {
+        newsNavigatorKey.currentState?.popUntil((route) => route.isFirst);
+      } else if (index == 2) {
         globalNavigatorKey.currentState?.popUntil((route) => route.isFirst);
       }
     } else {
@@ -103,8 +111,9 @@ class _HomeState extends State<Home> {
               navigatorKey: homeGlobalNavigatorKey,
               home: const SignInScreen(),
             ),
-            const Center(
-              child: Text("Today News"),
+            MaterialApp(
+              navigatorKey: newsNavigatorKey,
+              home: const TodayNewsScreen(),
             ),
             MaterialApp(
               navigatorKey: globalNavigatorKey,
@@ -117,21 +126,21 @@ class _HomeState extends State<Home> {
           child: ListView(
             children: [
               ListTile(
-                title: Text('Home'),
+                title: const Text('Home'),
                 onTap: () {
                   _changeTab1(2);
-                  Navigator.pop(context); // Close the drawer
+                  Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: Text("Today's News"),
+                title: const Text("Today's News"),
                 onTap: () {
-                  // Handle the logout action
-                  Navigator.pop(context); // Close the drawer
+                  _changeTab1(1);
+                  Navigator.pop(context);
                 },
               ),
               ListTile(
-                title: Text('About PAL'),
+                title: const Text('About PAL'),
                 onTap: () {
                   // Handle the settings navigation
                   Navigator.pop(context); // Close the drawer
@@ -145,10 +154,15 @@ class _HomeState extends State<Home> {
                 },
               ), // Optional divider
               ListTile(
-                title: Text("FAQ's"),
+                title: const Text("FAQ's"),
                 onTap: () {
-                  // Handle the logout action
-                  Navigator.pop(context); // Close the drawer
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const FAQScreen(),
+                    ),
+                  );
                 },
               ), // Optional divider
               ListTile(
