@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     );
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Flutter Sample",
+      title: "PAL",
       color: Colors.white,
       home: SafeArea(child: Splash()),
     );
