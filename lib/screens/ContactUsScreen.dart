@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample_project/screens/PerformanceGraphScreen.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ContactUsScreen extends StatefulWidget {
   const ContactUsScreen({super.key});
@@ -71,15 +70,15 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(4.0),
                     ),
-                    child: const Row(
+                    child: Row(
                       children: [
-                        Icon(
-                          FontAwesomeIcons.envelope,
-                          color: Colors.white,
-                          size: 36,
+                        Image.asset(
+                          "images/email.png",
+                          height: 36,
+                          width: 36,
                         ),
-                        SizedBox(width: 4),
-                        Text(
+                        const SizedBox(width: 4),
+                        const Text(
                           "support@priceactionlive.com",
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         )
@@ -96,15 +95,15 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(4.0),
                     ),
-                    child: const Row(
+                    child: Row(
                       children: [
-                        Icon(
-                          FontAwesomeIcons.whatsapp,
-                          color: Colors.white,
-                          size: 36,
+                        Image.asset(
+                          "images/whatsapp.png",
+                          height: 36,
+                          width: 36,
                         ),
-                        SizedBox(width: 4),
-                        Text(
+                        const SizedBox(width: 4),
+                        const Text(
                           "+1 786-882-2811",
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         )
@@ -121,15 +120,15 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(4.0),
                     ),
-                    child: const Row(
+                    child: Row(
                       children: [
-                        Icon(
-                          FontAwesomeIcons.skype,
-                          color: Colors.white,
-                          size: 36,
+                        Image.asset(
+                          "images/skype.png",
+                          height: 36,
+                          width: 36,
                         ),
-                        SizedBox(width: 4),
-                        Text(
+                        const SizedBox(width: 4),
+                        const Text(
                           "PAL",
                           style: TextStyle(color: Colors.white, fontSize: 16),
                         )

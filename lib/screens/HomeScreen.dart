@@ -20,12 +20,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<GridItems> createGridItemsList() {
     List<GridItems> items = [];
-    items.add(GridItems(name: 'DIR-Copy Trade Service', image: 'image1.jpg'));
-    items.add(GridItems(name: 'Become a pro trader', image: 'image2.jpg'));
-    items.add(GridItems(name: 'I.D Trading Signals', image: 'image3.jpg'));
-    items.add(GridItems(name: 'Live trade with us', image: 'image4.jpg'));
-    items.add(GridItems(name: 'Performance', image: 'image5.jpg'));
-    items.add(GridItems(name: 'How much earn', image: 'image6.jpg'));
+    items.add(GridItems(name: 'DIR-Copy Trade Service', image: 'images/candlestick-chart.png'));
+    items.add(GridItems(name: 'Become a pro trader', image: 'images/trade.png'));
+    items.add(GridItems(name: 'I.D Trading Signals', image: 'images/analyst.png'));
+    items.add(GridItems(name: 'Live trade with us', image: 'images/growth.png'));
+    items.add(GridItems(name: 'Performance', image: 'images/analyst.png'));
+    items.add(GridItems(name: 'How much earn', image: 'images/earnings.png'));
     return items;
   }
 
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Container(
                         width: MediaQuery.of(context).size.width / 5,
                         height: MediaQuery.of(context).size.width / 5,
-                        padding: const EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(16),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           color: Colors.white,
@@ -94,13 +94,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: 1.0,
                           ),
                         ),
-                        child: ClipOval(
-                          child: Image.asset(
-                            "images/splash.jpg",
-                            width: 50,
-                            height: 50,
-                            fit: BoxFit.cover,
-                          ),
+                        child: Image.asset(
+                          gridItems[index].image,
+                          fit: BoxFit.fill,
                         ),
                       ),
                       const SizedBox(height: 16),

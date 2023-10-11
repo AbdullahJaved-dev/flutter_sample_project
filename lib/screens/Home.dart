@@ -5,6 +5,8 @@ import 'package:flutter_sample_project/screens/HomeScreen.dart';
 import 'package:flutter_sample_project/screens/SignInScreen.dart';
 import 'package:flutter_sample_project/screens/TodayNewsScreen.dart';
 
+import 'AboutPALScreen.dart';
+
 final GlobalKey<NavigatorState> homeGlobalNavigatorKey =
     GlobalKey<NavigatorState>();
 final GlobalKey<NavigatorState> globalNavigatorKey =
@@ -20,33 +22,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedTab = 2;
-
-  final List<Widget> _pages = [
-    Navigator(
-      key: globalNavigatorKey,
-      onGenerateRoute: (RouteSettings routeSettings) {
-        return MaterialPageRoute(
-          builder: (context) => const SignInScreen(),
-        );
-      },
-    ),
-    Navigator(
-      key: newsNavigatorKey,
-      onGenerateRoute: (RouteSettings routeSettings) {
-        return MaterialPageRoute(
-          builder: (context) => const TodayNewsScreen(),
-        );
-      },
-    ),
-    Navigator(
-      key: homeGlobalNavigatorKey,
-      onGenerateRoute: (RouteSettings routeSettings) {
-        return MaterialPageRoute(
-          builder: (context) => const HomeScreen(),
-        );
-      },
-    )
-  ];
 
   void _changeTab(int index) {
     if (index == _selectedTab) {
@@ -85,13 +60,10 @@ class _HomeState extends State<Home> {
               ),
             );
           }),
-          title: ClipOval(
-            child: Image.asset(
-              "images/splash.jpg",
-              height: 40,
-              width: 40,
-              fit: BoxFit.fill,
-            ),
+          title: Image.asset(
+            "images/log.jpg",
+            height: 40,
+            fit: BoxFit.fill,
           ),
           centerTitle: true,
           elevation: 0,
@@ -142,12 +114,17 @@ class _HomeState extends State<Home> {
               ListTile(
                 title: const Text('About PAL'),
                 onTap: () {
-                  // Handle the settings navigation
-                  Navigator.pop(context); // Close the drawer
+                  Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AboutPALScreen(),
+                    ),
+                  );
                 },
               ), // Optional divider
               ListTile(
-                title: Text("User Say's"),
+                title: const Text("User Say's"),
                 onTap: () {
                   // Handle the logout action
                   Navigator.pop(context); // Close the drawer
@@ -166,21 +143,21 @@ class _HomeState extends State<Home> {
                 },
               ), // Optional divider
               ListTile(
-                title: Text("Monthly Return"),
+                title: const Text("Monthly Return"),
                 onTap: () {
                   // Handle the logout action
                   Navigator.pop(context); // Close the drawer
                 },
               ), // Optional divider
               ListTile(
-                title: Text("Plan & Prices"),
+                title: const Text("Plan & Prices"),
                 onTap: () {
                   // Handle the logout action
                   Navigator.pop(context); // Close the drawer
                 },
               ), // Optional divider
               ListTile(
-                title: Text("Contact Us"),
+                title: const Text("Contact Us"),
                 onTap: () {
                   Navigator.pop(context);
                   Navigator.push(
@@ -210,13 +187,26 @@ class _HomeState extends State<Home> {
           elevation: 4,
           items: [
             BottomNavigationBarItem(
-                icon: const Icon(Icons.notifications),
+                icon: const Icon(
+                  Icons.notifications,
+                  color: Color(0xFF1d55a1),
+                  size: 26,
+                ),
                 label: "ID Signal".toUpperCase()),
             BottomNavigationBarItem(
-                icon: const Icon(Icons.speaker),
+                icon: Image.asset(
+                  "images/megaphone.png",
+                  height: 26,
+                  width: 26,
+                ),
                 label: "Today News".toUpperCase()),
             BottomNavigationBarItem(
-                icon: const Icon(Icons.home), label: "Home".toUpperCase()),
+                icon: const Icon(
+                  Icons.home,
+                  color: Color(0xFF1d55a1),
+                  size: 26,
+                ),
+                label: "Home".toUpperCase()),
           ],
         ),
       ),
